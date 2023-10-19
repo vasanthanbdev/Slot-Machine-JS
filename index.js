@@ -47,12 +47,6 @@ const SYMBOLS_COUNT = {
     lemon: 40
 };
 
-const SYMBOLS_VALUES = {
-    bell: 100,
-    bar: 200,
-    cherry: 300,  
-    lemon: 400
-};
 
 const COLS = 3; // Number of reels 
 const ROWS = 4; // Number of rows per reel
@@ -105,7 +99,15 @@ const transpose = (reels) => {
 }
 
 
+
 // check if the user won
+const SYMBOLS_VALUES = {
+    bell: 100,
+    bar: 200,
+    cherry: 300,  
+    lemon: 400
+};
+
 const getWinnings = (rows, bet, lines) => {
     let winnings = 0;
   
@@ -161,7 +163,6 @@ const game = () => {
         }
     }
 }
-
 
 
 // let's play the game
