@@ -4,6 +4,7 @@ const prompt = require("prompt-sync")();
 const Deposite = () => {
     while (true) {
         const DepositeAmount = parseFloat(prompt("Enter a Deposite amount: "));
+        
         if (isNaN(DepositeAmount) || DepositeAmount <= 0) {
             console.log("Invalid Deposite amount Try again!");
         } else {
@@ -17,6 +18,7 @@ const Deposite = () => {
 const number_of_lines = () => {
     while (true) {
         const lines = parseFloat(prompt("Enter the number of lines you want to bet: "));
+
         if (isNaN(lines) || lines <= 0 || lines > 3) {
             console.log("Invalid number of lines Try again!");
         } else {
@@ -30,6 +32,7 @@ const number_of_lines = () => {
 const getBet = (balance, lines) => {
     while (true) {
         const bet = parseFloat(prompt("Enter the amount you want to bet per line: "));
+
         if (isNaN(bet) || bet <= 0 || bet > (balance / lines)) {
             console.log("Invalid a valid bet Try again!");
         } else {
@@ -56,16 +59,19 @@ const spin = () => {
 
     // Fill symbols array based on SYMBOLS_COUNT
     for (const [symbol, count] of Object.entries(SYMBOLS_COUNT)) {
+
         for (let i = 0; i < count; i++) {
             symbols.push(symbol);  
         }
     }
+
     const reels = [];
 
     // Populate each reel randomly
     for (let i = 0; i < COLS; i++) {
         reels.push([])
         reelSymbols = [...symbols]
+
         for (let j = 0; j < ROWS; j++) {  
             let randomIndex = Math.floor(Math.random() * reelSymbols.length);
             let selectedSymbol;
@@ -89,12 +95,15 @@ const spin = () => {
 // transpose the values
 const transpose = (reels) => {
     const rows = [];
+
     for (let i = 0; i < ROWS; i++) {
         rows.push([]);
+
         for (let j = 0; j < COLS; j++) {
             rows[i].push(reels[j][i]);
         }
     }
+
     return rows;
 }
 
@@ -139,7 +148,6 @@ const game = () => {
         console.log("Your balance amount is, $" + balance.toString());
 
         const lines = number_of_lines();
-
         const bet = getBet(balance, lines);
         balance -= bet * lines;
 
@@ -158,6 +166,7 @@ const game = () => {
         }
 
         const playAgain = prompt("Do you wanna play again? (y/n): ");
+
         if (playAgain != 'y') {
             break;
         }
